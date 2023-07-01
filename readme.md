@@ -1,6 +1,6 @@
 # CLI weather app
 
-Simple weather app that fetch weather information.
+Simple weather app that fetches weather information.
 
 ## Table of contents
 
@@ -11,7 +11,9 @@ Simple weather app that fetch weather information.
 
 ## General info
 
-This app is an attempt to work with external API and with the library click. The external API used to fetch the data is [Open-Meteo](https://open-meteo.com/).
+This app is an attempt to work with external APIs and with the library [click](https://click.palletsprojects.com/en/8.1.x/).
+
+The external API used to fetch the data is [Open-Meteo](https://open-meteo.com/).
 
 ## Tecnologies
 
@@ -43,7 +45,7 @@ To get information about the arguments:
 python main.py --help
 ```
 
-If you run the project  without the arguments, you will be prompted for the name of the city.
+If you run the project without the arguments, you will be prompted for the name of the city.
 
 If you only pass the name of the city, the app will use Celsius as temperature unit.
 
