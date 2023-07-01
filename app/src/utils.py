@@ -1,5 +1,5 @@
-import json
 from geopy.geocoders import Nominatim
+import pandas as pd
 
 
 def get_input() -> str:
@@ -26,17 +26,15 @@ def get_coordinates(city: str) -> tuple:
 
 def parse_data(response: dict) -> dict:
     parse_response = {}
-    parse_response["forecasts"] = []
     for i in range(len(response["time"])):
-        parse_response["forecasts"].append(
-            {
-                response["time"][i]: [
-                    {"temp_max": f'{response["temperature_2m_max"][i]} Celsius'},
-                    {"temp_min": f'{response["temperature_2m_min"][i]} Celsius'},
-                    {
-                        "precipitation_prob_max": f'{response["precipitation_probability_max"][i]} %'
-                    },
-                ]
-            }
-        )
-    return json.dumps(parse_response, indent=2)
+        parse_response[response["time"][i]] = [
+            f'{response["temperature_2m_max"][i]} °C',
+            f'{response["temperature_2m_min"][i]} °C',
+            f'{response["precipitation_probability_max"][i]} %',
+        ]
+
+    return pd.DataFrame.from_dict(
+        parse_response,
+        orient="index",
+        columns=["temp_max", "temp_min", "prec_prob_max"],
+    )
