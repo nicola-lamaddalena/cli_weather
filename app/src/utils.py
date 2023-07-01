@@ -25,22 +25,18 @@ def get_coordinates(city: str) -> tuple:
 
 
 def parse_data(response: dict) -> dict:
-    apparent_temperature_max = {}
-    precipitation_probability_max = {}
-    for i in range(len(response["daily"]["time"])):
-        apparent_temperature_max[
-            response["daily"]["time"][i]
-        ] = f'{response["daily"]["apparent_temperature_max"][i]} Celsius'
-
-        precipitation_probability_max[
-            response["daily"]["time"][i]
-        ] = f'{response["daily"]["precipitation_probability_max"][i]} %'
     parse_response = {}
     parse_response["forecasts"] = []
-    parse_response["forecasts"].extend(
-        (
-            {"apparent_temperature_max": apparent_temperature_max},
-            {"precipitation_probability_max": precipitation_probability_max},
+    for i in range(len(response["time"])):
+        parse_response["forecasts"].append(
+            {
+                response["time"][i]: [
+                    {"temp_max": f'{response["temperature_2m_max"][i]} Celsius'},
+                    {"temp_min": f'{response["temperature_2m_min"][i]} Celsius'},
+                    {
+                        "precipitation_prob_max": f'{response["precipitation_probability_max"][i]} %'
+                    },
+                ]
+            }
         )
-    )
-    return json.dumps(parse_response, indent=4)
+    return json.dumps(parse_response, indent=2)
