@@ -1,5 +1,6 @@
-from utils import get_input, get_coordinates, parse_data
+from utils import get_coordinates, parse_data, get_input
 from fetch_data import get_weather
+import click
 
 
 def main():
@@ -10,8 +11,10 @@ def main():
         print("An error occured with the name of the location. Check your spelling.")
         return None
     weather = get_weather(latitude=lat, longitude=lon, city=city)
-    parse_weather = parse_data(weather)
+    today_weather, parse_weather = parse_data(weather)
     print("--------------------")
+    print("Today's temperature:", today_weather, "°C")
+    print()
     print(parse_weather)
 
 
