@@ -45,11 +45,18 @@ To get information about the arguments:
 python main.py --help
 ```
 
-If you run the project without the arguments, you will be prompted for the name of the city.
+## Usage
 
-If you only pass the name of the city, the app will use Celsius as temperature unit.
+* If you run the project without the arguments, you will be prompted for the name of the city.
 
-If you want to pass both arguments at command line, you need to specify the names of the arguments.
+```powershell
+python main.py
+Insert your desired location: 
+```
+
+* If you omit the temperature unit, Celsius will be used as default.
+
+* If you want to pass one or both arguments at command line, you need to specify their names.
 
 ```powershell
 python main.py --city=name_of_the_city --unit=F
@@ -58,10 +65,5 @@ python main.py --city=name_of_the_city --unit=F
 ## Features
 
 * Get the temperature of the current day
-* Get the forecast for the next 7 days with min and max temperature and max probability of precipitation
+* Get the forecast for the next 7 days with minimum and maximum temperature and mean probability of precipitation
 * Choose the temperature unit (Celsius or Fahrenheit)
-
-### To-do
-
-* Choose to display the windspeed
-* Improve the start speed of the project
