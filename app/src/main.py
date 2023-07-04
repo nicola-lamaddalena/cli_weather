@@ -49,7 +49,7 @@ def parse_arguments(city: str, unit: str) -> tuple:
     curr_temp, future_temp = parse_data(response=response, unit=parse_unit)
     if curr_temp == "" and future_temp == {}:
         print("The city entered doesn't exist.")
-        return
+        return None, None
 
     print("--------------------")
     print("Today's temperature:", curr_temp, "°C")
