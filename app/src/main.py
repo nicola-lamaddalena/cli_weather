@@ -52,7 +52,7 @@ def parse_arguments(city: str, unit: str) -> tuple:
         return None, None
 
     print("--------------------")
-    print("Today's temperature:", curr_temp, "°C")
+    print(f"Today's temperature: {curr_temp} °{parse_unit}")
     print()
     print(future_temp)
 
