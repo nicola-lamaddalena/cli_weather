@@ -5,7 +5,7 @@ Simple weather app that fetches weather information.
 ## Table of contents
 
 * [General info](#general-info)
-* [Tecnologies](#tecnologies)
+* [Technologies](#technologies)
 * [Setup](#setup)
 * [Features](#features)
 
@@ -15,7 +15,7 @@ This app is an attempt to work with external APIs and with the library [click](h
 
 The external API used to fetch the data is [Open-Meteo](https://open-meteo.com/).
 
-## Tecnologies
+## Technologies
 
 * Python 3.11.0
 * requests 2.31.0
@@ -65,5 +65,5 @@ python main.py --city=name_of_the_city --unit=F
 ## Features
 
 * Get the temperature of the current day
-* Get the forecast for the next 7 days with minimum and maximum temperature and mean probability of precipitation
+* Get the forecast for the next 7 days with minimum and maximum temperatures and average probability of precipitations
 * Choose the temperature unit (Celsius or Fahrenheit)
