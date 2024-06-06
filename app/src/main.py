@@ -19,7 +19,7 @@ def get_weather(latitude: float, longitude: float, unit: str) -> dict:
         return {}
 
 
-def get_coordinates(city: str) -> tuple | None:
+def get_coordinates(city: str) -> tuple[float | None, float | None] | None:
     geolocator = Nominatim(user_agent="my-app")
     try:
         location = geolocator.geocode(city)
@@ -42,11 +42,12 @@ def get_coordinates(city: str) -> tuple | None:
     help="Location that you want to check",
     prompt="Insert your desired location",
 )
-def parse_arguments(city: str, unit: str) -> tuple:
+def parse_arguments(city: str, unit: str) -> None | tuple[None, None]:
     parse_city, parse_unit = city.strip().capitalize(), unit.strip().upper()
     lat, lon = get_coordinates(parse_city)
     response = get_weather(latitude=lat, longitude=lon, unit=parse_unit)
     curr_temp, future_temp = parse_data(response=response, unit=parse_unit)
+
     if curr_temp == "" and future_temp == {}:
         print("The city entered doesn't exist.")
         return None, None
@@ -57,7 +58,7 @@ def parse_arguments(city: str, unit: str) -> tuple:
     print(future_temp)
 
 
-def parse_data(response: dict, unit: str) -> tuple:
+def parse_data(response: dict, unit: str) -> tuple[str, dict]:
     parse_response = {}
     try:
         for i in range(len(response["daily"]["time"])):
